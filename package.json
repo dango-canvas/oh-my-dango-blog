@@ -2,10 +2,10 @@
   "name": "oh-my-dango-blog",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "build.js",
   "scripts": {
-    "build": "node build.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "bun run build.js",
+    "dev": "bun --watch build.js"
   },
   "keywords": [],
   "author": "",
