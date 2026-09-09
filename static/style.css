@@ -43,6 +43,9 @@ a:hover {
     margin-right: 10px;
 }
 .site-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-size: 1.5em;
     font-weight: bold;
     color: var(--text-color);
@@ -50,6 +53,16 @@ a:hover {
 }
 .site-title:hover {
     text-decoration: none;
+}
+.site-logo-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.15em;
+    line-height: 1;
+}
+.site-logo-text {
+    line-height: 1.2;
 }
 .site-header nav {
     display: flex;
@@ -362,6 +375,15 @@ hr {
     .site-title {
         font-size: 1.45em;
         white-space: nowrap;
+        gap: 8px;
+    }
+
+    /* 移动端光学配重：在右侧镜像生成与 emoji 图标等宽 (1.15em) 的幽灵占位元素，使得标题文字的中轴线严格居中对齐屏幕 */
+    .site-title::after {
+        content: '';
+        display: inline-block;
+        width: 1.15em;
+        pointer-events: none;
     }
 
     .site-header nav {

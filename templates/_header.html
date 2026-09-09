@@ -75,7 +75,7 @@ const currentSiteTitle = isEn ? (site.titleEn || 'Dango Blog') : site.title;
 <body>
     <div class="container">
         <header class="site-header">
-            <a href="<%= isEn ? 'en.html' : 'index.html' %>" class="site-title">🍡 <%= currentSiteTitle %></a>
+            <a href="<%= isEn ? 'en.html' : 'index.html' %>" class="site-title"><span class="site-logo-icon">🍡</span><span class="site-logo-text"><%= currentSiteTitle %></span></a>
             <%- include('_nav.html', { lang: (typeof lang !== 'undefined' ? lang : 'zh'), altLangUrl: (typeof altLangUrl !== 'undefined' ? altLangUrl : '') }) %>
         </header>
         <main>
