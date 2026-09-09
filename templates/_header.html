@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="rss.xml">
     
+    <% if (typeof post !== 'undefined' && post.hasMath) { %>
     <!-- KaTeX 数学公式支持 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -46,6 +47,7 @@
         ],
         throwOnError : false
     });"></script>
+    <% } %>
 </head>
 <body>
     <div class="container">

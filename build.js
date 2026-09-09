@@ -129,6 +129,9 @@ async function build() {
         const title = meta.title || path.basename(filename, '.md');
         const slug = meta.slug || slugify(title);
 
+        // 检测是否存在数学公式
+        const hasMath = /\$|\\\(|\\\[/.test(markdownContent);
+
         // 2. 自动生成摘要和绝对 URL
         const summary = htmlContent.replace(/<[^>]*>/g, '').substring(0, 150) + '...';
         const absoluteURL = `${siteConfig.baseURL}/${slug}.html`;
@@ -142,6 +145,7 @@ async function build() {
             summary, // 新增
             url: absoluteURL, // 新增
             pin: !!meta.pin, // 新增：置顶功能
+            hasMath, // 新增：标记是否含有公式
         });
     }
 
