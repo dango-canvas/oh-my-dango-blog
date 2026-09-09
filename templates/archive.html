@@ -1,25 +1,26 @@
 <%- include('_header.html', { pageTitle: '文章归档', site: site }) %>
-<div class="card">
-<h1>文章归档</h1>
-<p>本站的全部文章，按发布年份排列。</p>
-<hr>
 
-<div class="archive-list">
-<% let lastYear = null; %>
-<% posts.forEach(function(post){ %>
-    <% const currentYear = new Date(post.date).getFullYear(); %>
-    <% if (currentYear !== lastYear) { %>
-        <% if (lastYear !== null) { %></ul><% } %>
-        <h2 class="archive-year"><%= currentYear %></h2>
-        <ul class="post-list">
-        <% lastYear = currentYear; %>
-    <% } %>
-    <li>
-        <a href="<%= post.slug %>.html"><%= post.title %></a>
-        <span class="meta"><%= post.date.substring(5) %></span>
-    </li>
-<% }); %>
-</ul>
+<div class="card">
+    <h1>文章归档</h1>
+    <p>本站的全部文章，按发布年份排列。</p>
+    <hr>
+
+    <div class="timeline">
+    <% let lastYear = null; %>
+    <% posts.forEach(function(post){ %>
+        <% const currentYear = new Date(post.date).getFullYear(); %>
+        <% if (currentYear !== lastYear) { %>
+            <div class="timeline-year"><%= currentYear %></div>
+            <% lastYear = currentYear; %>
+        <% } %>
+        <div class="timeline-item">
+            <div class="timeline-meta"><%= post.date.substring(5) %></div>
+            <div class="timeline-content">
+                <a href="<%= post.slug %>.html"><%= post.title %></a>
+            </div>
+        </div>
+    <% }); %>
+    </div>
 </div>
-</div>
+
 <%- include('_footer.html', { site: site }) %>

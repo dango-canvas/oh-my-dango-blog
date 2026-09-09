@@ -1,9 +1,11 @@
 <%- include('_header.html', { pageTitle: post.title, site: site }) %>
+
 <div class="card">
-<article class="post">
-    <h1><%= post.title %></h1>
-    <div class="meta">
-        <span>发布于: <%= post.date %></span>
+    <article class="post">
+        <h1><%= post.title %></h1>
+        <div class="meta">
+            <span>发布于: <%= post.date %></span>
+        </div>
         <% if (post.tags && post.tags.length > 0) { %>
             <div class="tags">
                 <% post.tags.forEach(function(tag){ %>
@@ -11,11 +13,11 @@
                 <% }) %>
             </div>
         <% } %>
-    </div>
-    <hr>
-    <div class="post-content">
-        <%- post.content %>
-    </div>
-</article>
+        <hr>
+        <div class="post-content">
+            <%- post.content %>
+        </div>
+    </article>
 </div>
+
 <%- include('_footer.html', { site: site }) %>
