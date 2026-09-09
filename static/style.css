@@ -349,12 +349,12 @@ hr {
     }
 
     .site-header {
-        /* 移动端上下分层对称设计，彻底解决标题与导航在窄屏横向挤压变形问题 */
+        /* 移动端上下分层对称设计，校准上下纵向留白节奏 */
         flex-direction: column;
         align-items: center;
-        gap: 12px;
-        margin-top: 4px;
-        margin-bottom: 24px;
+        gap: 14px;
+        margin-top: 6px;
+        margin-bottom: 18px;
         margin-left: 0;
         margin-right: 0;
     }
@@ -369,7 +369,7 @@ hr {
         align-items: center;
         justify-content: center;
         flex-wrap: nowrap;
-        gap: 18px;
+        gap: 14px; /* 统一收敛间距，消除文字与胶囊之间的脱节与松散 */
     }
 
     .site-header nav a {
@@ -379,9 +379,10 @@ hr {
     }
 
     .site-header nav a.lang-switch-btn {
-        margin-left: 4px;
-        padding: 3px 10px;
+        margin-left: 0; /* 移除额外 margin，由父容器 gap 严格均分 */
+        padding: 3px 9px;
         white-space: nowrap;
+        top: 1px;
     }
 
     .card {
