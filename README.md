@@ -17,6 +17,7 @@
 ```text
 .
 ├── content/          # 存放 Markdown 文章原件
+│   └── legal/        # 法律条款与免责声明文档（编译为独立页面）
 ├── static/           # 静态资源（CSS, 图片等）
 ├── templates/        # EJS 页面模板
 ├── metadata.toml     # 站点配置与文章元数据

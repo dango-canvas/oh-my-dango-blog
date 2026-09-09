@@ -1,10 +1,10 @@
-<%- include('_header.html', { pageTitle: post.title, site: site }) %>
+<%- include('_header.html', { pageTitle: post.title, site: site, lang: post.lang, altLangUrl: post.altLangUrl }) %>
 
 <div class="card">
     <article class="post">
         <h1><%= post.title %></h1>
         <div class="meta">
-            <span>发布于: <%= post.date %></span>
+            <span><%= (typeof post.lang !== 'undefined' && post.lang === 'en') ? 'Published on: ' : '发布于: ' %><%= post.date %></span>
         </div>
         <% if (post.tags && post.tags.length > 0) { %>
             <div class="tags">
@@ -20,4 +20,4 @@
     </article>
 </div>
 
-<%- include('_footer.html', { site: site }) %>
+<%- include('_footer.html', { site: site, lang: post.lang }) %>

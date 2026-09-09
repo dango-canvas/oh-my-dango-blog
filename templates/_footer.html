@@ -1,10 +1,28 @@
+<% 
+const isEn = (typeof lang !== 'undefined' && lang === 'en'); 
+const currentSiteTitle = isEn ? (site.titleEn || 'Dango Blog') : site.title;
+%>
 </main>
         <footer class="site-footer">
-            <p>&copy; <%= new Date().getFullYear() %> 🍡 <%= site.title %></p>
+            <p>&copy; <%= new Date().getFullYear() %> 🍡 <%= currentSiteTitle %></p>
             <div class="footer-links">
-                <a href="rss.xml">RSS 订阅</a>
-                <span class="separator">·</span>
-                <a href="sitemap.xml">站点地图</a>
+                <% if (isEn) { %>
+                    <a href="terms-en.html">Terms of Service</a>
+                    <span class="separator">·</span>
+                    <a href="privacy-en.html">Privacy Policy</a>
+                    <span class="separator">·</span>
+                    <a href="rss.xml">RSS Feed</a>
+                    <span class="separator">·</span>
+                    <a href="sitemap.xml">Sitemap</a>
+                <% } else { %>
+                    <a href="terms.html">服务条款</a>
+                    <span class="separator">·</span>
+                    <a href="privacy.html">隐私声明</a>
+                    <span class="separator">·</span>
+                    <a href="rss.xml">RSS 订阅</a>
+                    <span class="separator">·</span>
+                    <a href="sitemap.xml">站点地图</a>
+                <% } %>
             </div>
         </footer>
     </div>

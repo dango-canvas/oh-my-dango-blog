@@ -1,10 +1,15 @@
-<%- include('_header.html', { pageTitle: '归档', site: site }) %>
+<%- include('_header.html', { pageTitle: (typeof lang !== 'undefined' && lang === 'en') ? 'Archive' : '归档', site: site, lang: (typeof lang !== 'undefined' ? lang : 'zh'), altLangUrl: (typeof lang !== 'undefined' && lang === 'en') ? 'archive.html' : 'archive-en.html' }) %>
 
 <div class="card">
-    <h1>文章归档</h1>
-    <p><%= site.title %>的全部文章，按发布年份排列。</p>
+    <h1><%= (typeof lang !== 'undefined' && lang === 'en') ? 'Archive' : '文章归档' %></h1>
+    <p><%= (typeof lang !== 'undefined' && lang === 'en') ? 'All articles sorted by publication year.' : (site.title + '的全部文章，按发布年份排列。') %></p>
     <hr>
 
+    <% if (posts.length === 0) { %>
+        <div class="empty-state">
+            <p><%= (typeof lang !== 'undefined' && lang === 'en') ? 'No English articles published yet.' : '暂无归档。' %></p>
+        </div>
+    <% } else { %>
     <div class="timeline">
     <% let lastYear = null; %>
     <% posts.forEach(function(post){ %>
@@ -21,6 +26,7 @@
         </div>
     <% }); %>
     </div>
+    <% } %>
 </div>
 
-<%- include('_footer.html', { site: site }) %>
+<%- include('_footer.html', { site: site, lang: (typeof lang !== 'undefined' ? lang : 'zh') }) %>

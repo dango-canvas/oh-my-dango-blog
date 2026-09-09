@@ -1,0 +1,9 @@
+<%- include('_header.html', { pageTitle: page.title, site: site, lang: page.lang, altLangUrl: page.altLangUrl }) %>
+
+<div class="card">
+    <article class="post-content">
+        <%- page.content %>
+    </article>
+</div>
+
+<%- include('_footer.html', { site: site, lang: page.lang }) %>

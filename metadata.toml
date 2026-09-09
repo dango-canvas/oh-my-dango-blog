@@ -2,34 +2,25 @@
 # 管理所有文章的发布信息
 [site]
 title = "团子博客"
+titleEn = "Dango Blog"
 baseURL = "https://blog.dango.ink" # 请务必替换成你未来的域名
 description = "这里会记录团子画板的开发日志，以及一些使用团子画板理清思路的文章。"
-
-[[post]]
-file = "Dango V1.0 发布.md"
-date = 2023-10-28
-
-[[post]]
-file = "如何组织技术博客.md"
-date = 2023-10-25
-slug = "how-to-organize-tech-blog"
-
-[[post]]
-file = "2026-01-10.md"
-date = 2026-01-10
+descriptionEn = "Development logs of Dango Canvas and thoughts on visual thinking."
 
 [[post]]
 file = "团子画板规格说明.md"
 date = 2026-01-25
-
-[[post]]
-file = "math-test.md"
-date = 2026-01-28
-title = "数学公式测试"
-slug = "math-formula-test"
+title = "团子画板规格说明"
+slug = "dango-canvas-specification"
 
 [[post]]
 file = "why-dango-is-secure.md"
 date = 2026-07-17
 title = "为什么团子画板是安全的"
 slug = "why-dango-is-secure"
+
+[[post]]
+file = "why-dango-is-secure-en.md"
+date = 2026-07-17
+title = "Why Dango is Secure"
+slug = "why-dango-is-secure-en"

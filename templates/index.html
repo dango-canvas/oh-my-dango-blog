@@ -1,20 +1,26 @@
-<%- include('_header.html', { pageTitle: '首页', site: site }) %>
+<%- include('_header.html', { pageTitle: (typeof lang !== 'undefined' && lang === 'en') ? 'Home' : '首页', site: site, lang: (typeof lang !== 'undefined' ? lang : 'zh'), isHome: true, altLangUrl: (typeof lang !== 'undefined' && lang === 'en') ? 'index.html' : 'en.html' }) %>
 
 <div class="card">
-    <ul class="post-list">
-        <% posts.forEach(function(post){ %>
-            <li>
-                <% if (post.pin) { %>
-                    <span class="pin-badge">置顶</span>
-                <% } %>
-                <a href="<%= post.slug %>.html"><%= post.title %></a>
-                <span class="meta"><%= post.date %></span>
-            </li>
-        <% }) %>
-    </ul>
-    <div class="list-footer">
-        <a href="archive.html" class="read-more">查看所有文章 &rarr;</a>
-    </div>
+    <% if (posts.length === 0) { %>
+        <div class="empty-state">
+            <p><%= (typeof lang !== 'undefined' && lang === 'en') ? 'No English articles published yet.' : '暂无文章。' %></p>
+        </div>
+    <% } else { %>
+        <ul class="post-list">
+            <% posts.forEach(function(post){ %>
+                <li>
+                    <% if (post.pin) { %>
+                        <span class="pin-badge"><%= (typeof lang !== 'undefined' && lang === 'en') ? 'PINNED' : '置顶' %></span>
+                    <% } %>
+                    <a href="<%= post.slug %>.html"><%= post.title %></a>
+                    <span class="meta"><%= post.date %></span>
+                </li>
+            <% }) %>
+        </ul>
+        <div class="list-footer">
+            <a href="<%= (typeof lang !== 'undefined' && lang === 'en') ? 'archive-en.html' : 'archive.html' %>" class="read-more"><%= (typeof lang !== 'undefined' && lang === 'en') ? 'All Articles →' : '查看所有文章 →' %></a>
+        </div>
+    <% } %>
 </div>
 
-<%- include('_footer.html', { site: site }) %>
+<%- include('_footer.html', { site: site, lang: (typeof lang !== 'undefined' ? lang : 'zh') }) %>

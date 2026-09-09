@@ -1,31 +1,63 @@
-<%- include('_header.html', { pageTitle: '关于', site: site }) %>
+<% 
+const isEn = (typeof lang !== 'undefined' && lang === 'en');
+%>
+<%- include('_header.html', { pageTitle: isEn ? 'About' : '关于', site: site, lang: isEn ? 'en' : 'zh', altLangUrl: isEn ? 'about.html' : 'about-en.html' }) %>
 
 <div class="card about-page">
-    <h2>关于本站</h2>
-    <p>欢迎来到 <%= site.title %>！</p>
-    <p><%= site.description %></p>
-    
-    <hr>
-    
-    <div class="author-section">
-        <img src="https://avatars.githubusercontent.com/u/67679830" alt="plasma-blue" class="author-avatar">
-        <div class="author-info">
-            <h3>关于作者</h3>
-            <p>这里是 <strong>plasma-blue</strong>。我热衷于解构复杂的事物，并从中建构出新的意义。目前，我正专注于 <strong>团子画板 (Dango)</strong> 的开发与迭代。</p>
-            <p>除了编程，我最近还在苦练杂耍球，试图在现实世界中也找寻一种动态的平衡。</p>
+    <% if (isEn) { %>
+        <h2>About this Blog</h2>
+        <p>Welcome to <%= site.titleEn || 'Dango Blog' %>!</p>
+        <p><%= site.descriptionEn || 'Development logs of Dango Canvas and thoughts on visual thinking.' %></p>
+        
+        <hr>
+        
+        <div class="author-section">
+            <img src="https://avatars.githubusercontent.com/u/67679830" alt="plasma-blue" class="author-avatar">
+            <div class="author-info">
+                <h3>About the Author</h3>
+                <p>I am <strong>plasma-blue</strong>. I enjoy deconstructing complex systems and crafting new clarity from them. Currently, I am focused on the development and iteration of <strong>Dango Canvas (团子画板)</strong>.</p>
+                <p>Besides programming, I have recently been practicing juggling, seeking dynamic balance in the physical world as well.</p>
+            </div>
         </div>
-    </div>
 
-    <div class="submission-box">
-        <h4>🎨 接收投稿</h4>
-        <p>如果你使用了团子画板创作了有趣的作品，欢迎向本博客投稿！</p>
-    </div>
-    
-    <h3>联系方式</h3>
-    <ul>
-        <li>Email: contact#dango.ink</li>
-        <li>GitHub: <a href="https://github.com/plasma-blue" target="_blank">plasma-blue</a></li>
-    </ul>
+        <div class="submission-box">
+            <h4>🎨 Submissions Welcome</h4>
+            <p>If you've created interesting works or structured thoughts using Dango Canvas, you are warmly invited to submit them to this blog!</p>
+        </div>
+        
+        <h3>Contact</h3>
+        <ul>
+            <li>Email: contact#dango.ink</li>
+            <li>GitHub: <a href="https://github.com/plasma-blue" target="_blank">plasma-blue</a></li>
+        </ul>
+    <% } else { %>
+        <h2>关于本站</h2>
+        <p>欢迎来到 <%= site.title %>！</p>
+        <p><%= site.description %></p>
+        
+        <hr>
+        
+        <div class="author-section">
+            <img src="https://avatars.githubusercontent.com/u/67679830" alt="plasma-blue" class="author-avatar">
+            <div class="author-info">
+                <h3>关于作者</h3>
+                <p>这里是 <strong>plasma-blue</strong>。我热衷于解构复杂的事物，并从中建构出新的意义。目前，我正专注于 <strong>团子画板 (Dango)</strong> 的开发与迭代。</p>
+                <p>除了编程，我最近还在苦练杂耍球，试图在现实世界中也找寻一种动态的平衡。</p>
+            </div>
+        </div>
+
+        <div class="submission-box">
+            <h4>🎨 接收投稿</h4>
+            <p>如果你使用了团子画板创作了有趣的作品，欢迎向本博客投稿！</p>
+        </div>
+        
+        <h3>联系方式</h3>
+        <ul>
+            <li>Email: contact#dango.ink</li>
+            <li>GitHub: <a href="https://github.com/plasma-blue" target="_blank">plasma-blue</a></li>
+        </ul>
+    <% } %>
 </div>
 
-<%- include('_footer.html', { site: site }) %>
+<%- include('_footer.html', { site: site, lang: isEn ? 'en' : 'zh' }) %>
+

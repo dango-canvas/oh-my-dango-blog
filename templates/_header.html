@@ -1,9 +1,13 @@
+<% 
+const isEn = (typeof lang !== 'undefined' && lang === 'en'); 
+const currentSiteTitle = isEn ? (site.titleEn || 'Dango Blog') : site.title;
+%>
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="<%= isEn ? 'en' : 'zh-CN' %>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= pageTitle %> | <%= site.title %></title>
+    <title><%= pageTitle %> | <%= currentSiteTitle %></title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍡</text></svg>">
     
     <!-- 关键 CSS 内联，防止白屏闪烁 (FOUC) -->
@@ -48,11 +52,30 @@
         throwOnError : false
     });"></script>
     <% } %>
+
+    <% if (typeof isHome !== 'undefined' && isHome && !isEn) { %>
+    <!-- 仅在中文首页入口且未指定英文时：根据用户历史偏好或浏览器语言自动跳转 -->
+    <script>
+        (function() {
+            try {
+                var pref = localStorage.getItem('dango_blog_lang');
+                var navLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+                var shouldEn = pref ? (pref === 'en') : navLang.startsWith('en');
+                if (shouldEn) {
+                    var p = window.location.pathname;
+                    if (p.endsWith('index.html') || p.endsWith('/') || !p.includes('.')) {
+                        window.location.replace('en.html');
+                    }
+                }
+            } catch(e) {}
+        })();
+    </script>
+    <% } %>
 </head>
 <body>
     <div class="container">
         <header class="site-header">
-            <a href="index.html" class="site-title">🍡 <%= site.title %></a>
-            <%- include('_nav.html') %>
+            <a href="<%= isEn ? 'en.html' : 'index.html' %>" class="site-title">🍡 <%= currentSiteTitle %></a>
+            <%- include('_nav.html', { lang: (typeof lang !== 'undefined' ? lang : 'zh'), altLangUrl: (typeof altLangUrl !== 'undefined' ? altLangUrl : '') }) %>
         </header>
         <main>
