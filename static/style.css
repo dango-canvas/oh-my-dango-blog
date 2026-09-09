@@ -188,6 +188,45 @@ hr {
     text-decoration: none;
 }
 
+/* --- 关于页样式 --- */
+.author-section {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.author-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.author-info {
+    flex: 1;
+}
+
+.author-info h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.submission-box {
+    background-color: #fff9db;
+    border: 1px dashed #fcc419;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.submission-box h4 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: #e67700;
+}
+
 /* --- 时间线样式 --- */
 .timeline {
     position: relative;

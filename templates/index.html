@@ -1,8 +1,6 @@
 <%- include('_header.html', { pageTitle: '首页', site: site }) %>
 
 <div class="card">
-    <p class="site-description"><%= site.description %></p>
-    <hr>
     <ul class="post-list">
         <% posts.forEach(function(post){ %>
             <li>
