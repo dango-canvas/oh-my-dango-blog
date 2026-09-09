@@ -1,7 +1,7 @@
 # metadata.toml
 # 管理所有文章的发布信息
 [site]
-title = "🍡 团子博客"
+title = "团子博客"
 baseURL = "https://blog.dango.ink" # 请务必替换成你未来的域名
 description = "这里会记录团子画板的开发日志，以及一些使用团子画板理清思路的文章。"
 
