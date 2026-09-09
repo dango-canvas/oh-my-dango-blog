@@ -19,6 +19,11 @@
               padding: 0;
               /* 初始隐藏，配合 CSS 动画平滑显示 */
               opacity: 0;
+              animation: fadeIn 0.4s ease-out forwards;
+          }
+          @keyframes fadeIn {
+              from { opacity: 0; transform: translateY(10px); }
+              to { opacity: 1; transform: translateY(0); }
           }
          .container {
              max-width: 840px;
