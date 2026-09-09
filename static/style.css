@@ -62,7 +62,7 @@ a:hover {
 .site-header nav a {
     margin-left: 25px;
     color: var(--meta-color);
-    font-size: 1.1em;
+    font-size: 1em;
 }
 
 .card {
@@ -121,6 +121,18 @@ hr {
 .post-list li a {
     font-size: 1.1em;
     font-weight: 500;
+}
+.pin-badge {
+    display: inline-block;
+    background-color: #ff6b6b;
+    color: white;
+    font-size: 0.75em;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 8px;
+    vertical-align: middle;
+    font-weight: bold;
+    line-height: 1.2;
 }
 .post-list .meta {
     float: right;

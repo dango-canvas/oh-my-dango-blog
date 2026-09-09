@@ -4,6 +4,9 @@
     <ul class="post-list">
         <% posts.forEach(function(post){ %>
             <li>
+                <% if (post.pin) { %>
+                    <span class="pin-badge">置顶</span>
+                <% } %>
                 <a href="<%= post.slug %>.html"><%= post.title %></a>
                 <span class="meta"><%= post.date %></span>
             </li>

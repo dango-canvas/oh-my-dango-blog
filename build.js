@@ -98,6 +98,7 @@ async function build() {
             content: htmlContent,
             summary, // 新增
             url: absoluteURL, // 新增
+            pin: !!meta.pin, // 新增：置顶功能
         });
     }
 
@@ -129,7 +130,13 @@ async function build() {
     const indexTemplatePath = path.join(templatesDir, 'index.html');
     if (await fs.pathExists(indexTemplatePath)) {
         const indexTemplate = await fs.readFile(indexTemplatePath, 'utf-8');
-        const indexHtml = ejs.render(indexTemplate, { posts: allPosts.slice(0, 10), site: siteConfig }, { filename: indexTemplatePath }); // <--- 添加 options
+        // 为首页准备排序后的文章列表（置顶优先）
+        const indexPosts = [...allPosts].sort((a, b) => {
+            if (a.pin && !b.pin) return -1;
+            if (!a.pin && b.pin) return 1;
+            return new Date(b.date) - new Date(a.date);
+        });
+        const indexHtml = ejs.render(indexTemplate, { posts: indexPosts.slice(0, 10), site: siteConfig }, { filename: indexTemplatePath }); // <--- 添加 options
         await fs.writeFile(path.join(publicDir, 'index.html'), indexHtml);
         console.log(`-> 已生成: index.html`);
     }
