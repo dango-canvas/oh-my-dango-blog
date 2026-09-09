@@ -46,6 +46,7 @@ a:hover {
     font-size: 1.5em;
     font-weight: bold;
     color: var(--text-color);
+    white-space: nowrap;
 }
 .site-title:hover {
     text-decoration: none;
@@ -59,6 +60,7 @@ a:hover {
     color: var(--meta-color);
     font-size: 1em;
     line-height: 1.5;
+    white-space: nowrap;
 }
 .site-header nav a.lang-switch-btn {
     margin-left: 20px;
@@ -76,6 +78,7 @@ a:hover {
     background-color: #e7f5ff;
     border: 1px solid #cbe7fc;
     letter-spacing: 0.5px;
+    white-space: nowrap;
     transition: all 0.2s ease-in-out;
 }
 .site-header nav a.lang-switch-btn:hover {
@@ -338,30 +341,68 @@ hr {
     font-size: 1.1em;
 }
 
-/* --- 移动端响应式适配与阴影优化 --- */
+/* --- 移动端响应式适配与排版优化 --- */
 @media (max-width: 768px) {
     body {
-        padding: 14px 10px;
+        /* 左右边距调整为 16px 标准呼吸边距，彻底告别 10px 的逼仄尴尬感 */
+        padding: 16px 16px 36px;
     }
 
     .site-header {
-        margin-left: 4px;
-        margin-right: 4px;
+        /* 移动端上下分层对称设计，彻底解决标题与导航在窄屏横向挤压变形问题 */
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        margin-top: 4px;
+        margin-bottom: 24px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .site-title {
+        font-size: 1.45em;
+        white-space: nowrap;
+    }
+
+    .site-header nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: nowrap;
+        gap: 18px;
     }
 
     .site-header nav a {
-        margin-left: 14px;
+        margin-left: 0;
+        font-size: 0.95em;
+        white-space: nowrap;
+    }
+
+    .site-header nav a.lang-switch-btn {
+        margin-left: 4px;
+        padding: 3px 10px;
+        white-space: nowrap;
     }
 
     .card {
-        padding: 24px 18px;
-        border-radius: 10px;
-        /* 移动端收敛阴影：弱化大范围 blur，消除屏幕边缘厚重感 */
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+        padding: 26px 20px;
+        border-radius: 12px;
+        /* 移动端精致浅层微投影，四周呼吸感自然 */
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
     }
 
     .post h1 {
-        font-size: 1.4em;
+        font-size: 1.35em;
+        line-height: 1.35;
+        word-break: break-word;
+    }
+
+    .post-content h2 {
+        font-size: 1.25em;
+    }
+
+    .post-content h3 {
+        font-size: 1.1em;
     }
 
     .author-section {
