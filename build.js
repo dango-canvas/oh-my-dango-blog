@@ -67,10 +67,10 @@ async function build() {
     }
 
     const allPosts = [];
-    for (const filename in metadata) {
-        if (filename === 'site') continue; // 跳过站点配置
-
-        const meta = metadata[filename];
+    const posts = metadata.post || [];
+    for (const meta of posts) {
+        const filename = meta.file;
+        if (!filename) continue;
         if (!meta.date) continue;
 
         const filePath = path.join(contentDir, filename);
@@ -83,7 +83,7 @@ async function build() {
         const { tags, content: markdownContent } = parseTagsAndContent(fileContent);
         
         const htmlContent = marked.parse(markdownContent);
-        const title = path.basename(filename, '.md');
+        const title = meta.title || path.basename(filename, '.md');
         const slug = meta.slug || slugify(title);
 
         // 2. 自动生成摘要和绝对 URL
@@ -154,6 +154,15 @@ async function build() {
             await fs.writeFile(outputPath, tagHtml);
             console.log(`-> 已生成标签页: tag-${tag}.html`);
         }
+    }
+
+    // 10. 生成关于页
+    const aboutTemplatePath = path.join(templatesDir, 'about.html');
+    if (await fs.pathExists(aboutTemplatePath)) {
+        const aboutTemplate = await fs.readFile(aboutTemplatePath, 'utf-8');
+        const aboutHtml = ejs.render(aboutTemplate, { site: siteConfig }, { filename: aboutTemplatePath });
+        await fs.writeFile(path.join(publicDir, 'about.html'), aboutHtml);
+        console.log(`-> 已生成: about.html`);
     }
     // TODO: 在这里添加生成首页、归档页和标签页的逻辑
     // const indexTemplate = ...

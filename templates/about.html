@@ -1,0 +1,20 @@
+<%- include('_header.html', { pageTitle: '关于', site: site }) %>
+
+<div class="card about-page">
+    <h2>关于本站</h2>
+    <p>欢迎来到 <%= site.title %>！</p>
+    <p><%= site.description %></p>
+    
+    <hr>
+    
+    <h3>关于作者</h3>
+    <p>这里是团子，一个热衷于技术分享和绘画的小伙伴。本站主要记录团子画板的开发日志以及一些技术探索。</p>
+    
+    <h3>联系方式</h3>
+    <ul>
+        <li>Email: contact@dango.ink</li>
+        <li>GitHub: <a href="https://github.com/dango" target="_blank">dango</a></li>
+    </ul>
+</div>
+
+<%- include('_footer.html', { site: site }) %>
