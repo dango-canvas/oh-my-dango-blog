@@ -74,10 +74,29 @@ a:hover {
 }
 
 .site-footer {
-    margin-top: 40px;
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
     text-align: center;
     font-size: 0.9em;
-    color: #999;
+    color: var(--meta-color);
+}
+
+.site-footer p {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    color: var(--meta-color);
+    margin: 0 5px;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+.footer-links .separator {
+    color: #ccc;
 }
 
 hr {
