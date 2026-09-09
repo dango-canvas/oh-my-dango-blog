@@ -27,3 +27,9 @@ file = "math-test.md"
 date = 2026-01-28
 title = "数学公式测试"
 slug = "math-formula-test"
+
+[[post]]
+file = "why-dango-is-secure.md"
+date = 2026-07-17
+title = "为什么团子画板是安全的"
+slug = "why-dango-is-secure"
