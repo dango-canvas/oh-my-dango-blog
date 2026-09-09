@@ -12,3 +12,6 @@ date = 2023-10-28
 date = 2023-10-25
 # 我们可以保留 slug 的扩展性
 slug = "how-to-organize-tech-blog"
+
+["2026-01-10.md"]
+date = 2026-01-10

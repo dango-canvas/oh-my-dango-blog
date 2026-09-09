@@ -1,29 +1,21 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <title><%= title %></title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="post-card">
-        <h1><%= title %></h1>
-        <div class="meta">
-            <span>发布于: <%= date %></span>
-        </div>
-        
-        <% if (tags && tags.length > 0) { %>
+<%- include('_header.html', { pageTitle: post.title, site: site }) %>
+<div class="card">
+<article class="post">
+    <h1><%= post.title %></h1>
+    <div class="meta">
+        <span>发布于: <%= post.date %></span>
+        <% if (post.tags && post.tags.length > 0) { %>
             <div class="tags">
-                <% tags.forEach(function(tag){ %>
+                <% post.tags.forEach(function(tag){ %>
                     <a href="tag-<%= tag %>.html">#<%= tag %></a>
                 <% }) %>
             </div>
         <% } %>
-    
-        <hr>
-        <article>
-            <%- content %>
-        </article>
     </div>
-</body>
-</html>
+    <hr>
+    <div class="post-content">
+        <%- post.content %>
+    </div>
+</article>
+</div>
+<%- include('_footer.html', { site: site }) %>
