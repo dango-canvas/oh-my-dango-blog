@@ -1,0 +1,14 @@
+# metadata.toml
+# 管理所有文章的发布信息
+[site]
+title = "我的技术博客"
+baseURL = "https://www.your-domain.com" # 请务必替换成你未来的域名
+description = "一个关于技术、思考和学习的个人空间。"
+
+["Dango V1.0 发布.md"]
+date = 2023-10-28
+
+["如何组织技术博客.md"]
+date = 2023-10-25
+# 我们可以保留 slug 的扩展性
+slug = "how-to-organize-tech-blog"

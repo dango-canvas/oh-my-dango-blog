@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="post-card">
+        <h1><%= title %></h1>
+        <div class="meta">
+            <span>发布于: <%= date %></span>
+        </div>
+        
+        <% if (tags && tags.length > 0) { %>
+            <div class="tags">
+                <% tags.forEach(function(tag){ %>
+                    <a href="tag-<%= tag %>.html">#<%= tag %></a>
+                <% }) %>
+            </div>
+        <% } %>
+    
+        <hr>
+        <article>
+            <%- content %>
+        </article>
+    </div>
+</body>
+</html>

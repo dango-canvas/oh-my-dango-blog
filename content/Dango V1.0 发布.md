@@ -1,0 +1,3 @@
+#dango #release #funding
+
+这是 Dango V1.0 发布的正文内容。我们很高兴地宣布...

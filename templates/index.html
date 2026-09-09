@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>我的博客</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="post-card">
+        <h1>我的博客</h1>
+        <p>欢迎来到我的个人空间。</p>
+        <hr>
+        <h2>最新文章</h2>
+        <ul>
+            <% posts.forEach(function(post){ %>
+                <li>
+                    <a href="<%= post.slug %>.html"><%= post.title %></a>
+                    <span class="meta">(<%= post.date %>)</span>
+                </li>
+            <% }) %>
+        </ul>
+        <!-- 我们可以加一个归档页的链接 -->
+        <a href="archive.html">查看所有文章...</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>文章归档</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="post-card">
+        <h1>文章归档</h1>
+        <p>这里是本站的全部文章，按发布日期排列。</p>
+        <hr>
+
+        <% let lastYear = null; %>
+        <% posts.forEach(function(post){ %>
+            <% const currentYear = new Date(post.date).getFullYear(); %>
+            <% if (currentYear !== lastYear) { %>
+                <% if (lastYear !== null) { %></ul><% } %>
+                <h2><%= currentYear %></h2>
+                <ul>
+                <% lastYear = currentYear; %>
+            <% } %>
+            <li>
+                <a href="<%= post.slug %>.html"><%= post.title %></a>
+                <span class="meta">(<%= post.date.substring(5) %>)</span>
+            </li>
+        <% }); %>
+        </ul>
+        <br>
+        <a href="index.html">返回首页</a>
+    </div>
+</body>
+</html>

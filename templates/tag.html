@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>标签: <%= tag %></title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="post-card">
+        <h1>标签: #<%= tag %></h1>
+        <hr>
+        <ul>
+            <% posts.forEach(function(post){ %>
+                <li>
+                    <a href="<%= post.slug %>.html"><%= post.title %></a>
+                    <span class="meta">(<%= post.date %>)</span>
+                </li>
+            <% }) %>
+        </ul>
+        <br>
+        <a href="archive.html">查看所有文章</a>
+    </div>
+</body>
+</html>
