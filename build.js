@@ -5,6 +5,49 @@ const toml = require('@iarna/toml');
 const ejs = require('ejs');
 const RSS = require('rss');
 const { SitemapStream, streamToPromise } = require('sitemap');
+
+// 配置 marked 以保留数学公式
+marked.use({
+    extensions: [
+        {
+            name: 'blockMath',
+            level: 'block',
+            start(src) { return src.indexOf('$$'); },
+            tokenizer(src, tokens) {
+                const match = /^\$\$([\s\S]+?)\$\$/.exec(src);
+                if (match) {
+                    return {
+                        type: 'blockMath',
+                        raw: match[0],
+                        text: match[0]
+                    };
+                }
+            },
+            renderer(token) {
+                return `<p>${token.text}</p>`;
+            }
+        },
+        {
+            name: 'inlineMath',
+            level: 'inline',
+            start(src) { return src.indexOf('$'); },
+            tokenizer(src, tokens) {
+                const match = /^\$([^\$\n]+?)\$/.exec(src);
+                if (match) {
+                    return {
+                        type: 'inlineMath',
+                        raw: match[0],
+                        text: match[0]
+                    };
+                }
+            },
+            renderer(token) {
+                return token.text;
+            }
+        }
+    ]
+});
+
 // --- 路径定义 ---
 const contentDir = path.join(__dirname, 'content');
 const publicDir = path.join(__dirname, 'public');

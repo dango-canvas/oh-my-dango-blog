@@ -21,3 +21,9 @@ date = 2026-01-10
 [[post]]
 file = "团子画板规格说明.md"
 date = 2026-01-25
+
+[[post]]
+file = "math-test.md"
+date = 2026-01-28
+title = "数学公式测试"
+slug = "math-formula-test"
